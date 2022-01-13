@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import NewTask from "../Presentational/NewTask";
+import TasksList from "../Presentational/TasksList";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+export default function App() {
+  // initialize the state in the function component
+  const [newTask, setNewTask] = useState({});
+  const [allTasks, setAllTasks] = useState([]);
+
+  // Create event handler for changes to the new task input field
+
+
+
+
+  // Create event handler for when the submit button is clicked
+
+
+
+  
+  // Create event handler for when a task is deleted from the tasks list
+
+
+
+  // return the NewTask component and TasksList component
+  return(
+    <main>
+      <h1>Tasks</h1>
+      <NewTask 
+
+      />
+      <TasksList 
+
+      />
+
+    </main>
   );
 }
 
-export default App;
+
+
+
