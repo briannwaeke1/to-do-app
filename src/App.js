@@ -1,41 +1,36 @@
 import React, { useState } from "react";
-import NewTask from "../Presentational/NewTask";
-import TasksList from "../Presentational/TasksList";
+import NewTask from "./NewTask";
+import TasksList from "./TasksList";
 
-export default function App() {
-  // initialize the state in the function component
+export default function AppFunction() {
   const [newTask, setNewTask] = useState({});
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
+    setNewTask((prev) => ({ ...prev, id: Date.now(), [name]: value }));
+  };
+
   const [allTasks, setAllTasks] = useState([]);
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!newTask.title) return;
+    setAllTasks((prev) => [newTask, ...prev]);
+    setNewTask({});
+  };
+  const handleDelete = (taskIdToRemove) => {
+    setAllTasks((prev) => prev.filter(
+      (task) => task.id !== taskIdToRemove
+    ));
+  };
 
-  // Create event handler for changes to the new task input field
-
-
-
-
-  // Create event handler for when the submit button is clicked
-
-
-
-  
-  // Create event handler for when a task is deleted from the tasks list
-
-
-
-  // return the NewTask component and TasksList component
-  return(
+  return (
     <main>
       <h1>Tasks</h1>
-      <NewTask 
-
+      <NewTask
+        newTask={newTask}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
       />
-      <TasksList 
-
-      />
-
+      <TasksList allTasks={allTasks} handleDelete={handleDelete} />
     </main>
   );
 }
-
-
-
-
